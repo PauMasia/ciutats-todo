@@ -1,6 +1,9 @@
-package com.pau.TaulaSimple.model;
+package com.pau.TaulaSimple.model.entitats;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Set;
 
 //package com.pau.TaulaSimple.model;
 //
@@ -12,18 +15,26 @@ import jakarta.persistence.*;
 //){
 //
 //}
-@Entity
-@Table//(name = "Ciudades")
+@Entity @Table(name = "CIUTAT")
 public class Ciutat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     long id;
     //    @Column(nullable = false)
     String nom;
-
     int poblacio;
     String descripcio;
     String imatge;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "provincia_id")
+    public Provincia idProvincia;
+
+    @ManyToMany
+    @JoinTable(name = "CIUTAT_FRANQUICIA",
+            joinColumns = @JoinColumn(name = "FRANQUICIA_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CIUTAT_ID")
+    )
+    List<Franquicia> franquicias;
 
     public Ciutat() {
     }
@@ -33,7 +44,6 @@ public class Ciutat {
         this.nom = nom;
         this.poblacio = poblacio;
         this.descripcio = descripcio;
-        Str
         this.imatge = imatge;
     }
 
@@ -75,5 +85,14 @@ public class Ciutat {
 
     public void setImatge(String imatge) {
         this.imatge = imatge;
+    }
+
+    @Override
+    public String toString() {
+        return nom ;
+    }
+
+    public List<Franquicia> getFranquicias() {
+        return franquicias;
     }
 }

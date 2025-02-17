@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <title>Llista de Ciutats</title>
+</head>
+<body>
+<h1>Llista de Ciutats</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Població</th>
+        <th>Franquicies</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Itera sobre la llista de ciutats passada pel controlador -->
+    <tr th:each="ciutat : ${ciutats}">
+        <td th:text="${ciutat.id}"></td>
+        <td th:text="${ciutat.nom}"></td>
+        <td th:text="${ciutat.getPoblacio()}"></td>
+        <td>
+            <ul th:each="franquicia:${ciutat.getFranquicias()}">
+                <li th:text="${franquicia.getNom()}">
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
