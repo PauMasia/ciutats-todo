@@ -12,7 +12,7 @@ public class Franquicia {
     private long id;
     private String nom;
 
-    @ManyToMany(mappedBy = "franquicias ")
+    @ManyToMany(mappedBy = "franquicias")
     List<Ciutat> ciutats;
 
     public Franquicia() {
