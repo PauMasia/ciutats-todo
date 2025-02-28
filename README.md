@@ -1,7 +1,7 @@
-# Pau Masia
+# Pau Masià
 
-# Usuario:     pau
-# Contraseña:  1234  
+## Usuario:     pau
+## Contraseña:  1234  
 
 **Endpoints**
 
